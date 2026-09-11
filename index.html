@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Барбершоп BRUTAL | Мужские стрижки</title>
+    <title>Барбершоп BRUTAL | Алматы</title>
     <style>
         /* --- Сброс стилей и переменные --- */
         * {
@@ -17,7 +17,7 @@
             --bg-black: #0d0d0d;         /* Глубокий черный */
             --card-gray: #161616;        /* Темно-серый для блоков */
             --accent-green: #1b5e3a;     /* Темно-зеленый основной */
-            --bright-green: #23784a;     /* Более светлый темно-зеленый для наведения */
+            --bright-green: #23784a;     /* Светло-зеленый акцент */
             --text-white: #ffffff;       /* Белый текст */
             --text-gray: #9e9e9e;        /* Серый текст */
         }
@@ -91,42 +91,55 @@
             color: var(--text-gray);
             font-size: 16px;
             max-width: 500px;
-            margin: 0 auto 30px;
+            margin: 0 auto;
         }
 
-        /* --- Интерактивные "плавающие" кнопки --- */
-        .btn {
+        /* --- Блок информации для записи --- */
+        .call-to-action {
+            padding: 30px 5%;
+            max-width: 600px;
+            margin: 30px auto 0;
+            background-color: var(--card-gray);
+            border-radius: 8px;
+            border: 1px solid var(--accent-green);
+            text-align: center;
+        }
+
+        .call-to-action h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--text-white);
+        }
+
+        /* Интерактивная плавающая кнопка-звонок */
+        .phone-btn {
             display: inline-block;
             background-color: var(--accent-green);
             color: var(--text-white);
             padding: 16px 32px;
             text-decoration: none;
             font-weight: 700;
-            text-transform: uppercase;
+            font-size: 18px;
             border-radius: 6px;
-            border: none;
-            cursor: pointer;
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(27, 94, 58, 0.4);
+            margin-top: 10px;
             
-            /* Эффект плавного "покачивания/поплавания" */
             animation: floating 3s ease-in-out infinite;
             transition: all 0.3s ease;
         }
 
-        /* Анимация плавания */
         @keyframes floating {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-6px); }
             100% { transform: translateY(0px); }
         }
 
-        /* Реакция на наведение или касание (пальцем на телефоне) */
-        .btn:hover, .btn:active {
+        .phone-btn:hover, .phone-btn:active {
             background-color: var(--bright-green);
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 8px 25px rgba(35, 120, 74, 0.6);
-            animation-play-state: paused; /* Останавливаем плавание при касании */
+            animation-play-state: paused;
         }
 
         /* --- Прайс-лист --- */
@@ -166,7 +179,7 @@
             font-size: 17px;
         }
 
-        /* --- Блок с примерами фотографий (Портфолио) --- */
+        /* --- Блок Галереи с черно-белыми заглушками --- */
         .portfolio-section {
             padding: 40px 5%;
             max-width: 900px;
@@ -175,20 +188,19 @@
 
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
 
-        /* Стильные фото-заглушки */
         .photo-placeholder {
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 1 / 1;
             border-radius: 8px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 15px;
             border: 2px dashed #333;
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
@@ -204,50 +216,19 @@
         }
 
         .photo-light {
-            background-color: #e5e5e5;
-            color: #222222;
+            background-color: #f0f0f0;
+            color: #111111;
             border-color: #cccccc;
         }
 
         .photo-placeholder span {
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             margin-top: 5px;
         }
 
-        /* --- Форма записи --- */
-        .booking-section {
-            padding: 40px 5%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            background-color: var(--card-gray);
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid rgba(27, 94, 58, 0.3);
-        }
-
-        input, select {
-            padding: 14px;
-            background-color: var(--bg-black);
-            border: 1px solid #333;
-            color: #fff;
-            border-radius: 6px;
-            font-size: 15px;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: var(--accent-green);
-        }
-
-        /* --- Контакты --- */
+        /* --- Контакты и Карта 2ГИС --- */
         .contacts {
             padding: 40px 5%;
             text-align: center;
@@ -255,22 +236,30 @@
             margin-top: 40px;
         }
 
-        .contacts p {
-            color: var(--text-gray);
-            margin-bottom: 10px;
-        }
-
         .address {
             font-size: 18px;
             font-weight: bold;
             color: var(--text-white);
+            margin-bottom: 8px;
+        }
+
+        .contacts p {
+            color: var(--text-gray);
             margin-bottom: 20px;
+        }
+
+        .map-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(27, 94, 58, 0.4);
         }
 
         /* Мобильная адаптивность */
         @media (max-width: 480px) {
             .hero h1 { font-size: 26px; }
-            .btn { width: 100%; text-align: center; }
+            .phone-btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
@@ -279,15 +268,20 @@
     <!-- Шапка -->
     <header>
         <div class="logo">BRUTAL<span>.BARBER</span></div>
-        <a href="tel:+79000000000" class="phone">+7 (900) 000-00-00</a>
+        <a href="tel:+77071234567" class="phone">+7 (707) 123-45-67</a>
     </header>
 
     <!-- Главный экран -->
     <section class="hero">
-        <div class="city-badge">г. Алматы • ул. Абая, 15</div>
+        <div class="city-badge">г. Алматы • ул. Гоголя, 1</div>
         <h1>Мужские стрижки <br> и моделирование бороды</h1>
         <p>Классика и тренды. Чай, кофе и мужская атмосфера.</p>
-        <a href="#booking" class="btn">Записаться на стрижку</a>
+
+        <!-- Блок со связью по номеру вместо кнопки записи -->
+        <div class="call-to-action">
+            <h3>Для записи свяжитесь по номеру:</h3>
+            <a href="tel:+77071234567" class="phone-btn">📞 +7 (707) 123-45-67</a>
+        </div>
     </section>
 
     <!-- Цены -->
@@ -295,97 +289,63 @@
         <h2 class="section-title">Услуги и цены</h2>
         <div class="price-item">
             <span class="price-name">Мужская стрижка</span>
-            <span class="price-val">1 500 ₽</span>
+            <span class="price-val">5 000 ₸</span>
         </div>
         <div class="price-item">
             <span class="price-name">Стрижка бороды и усов</span>
-            <span class="price-val">1 000 ₽</span>
+            <span class="price-val">3 500 ₸</span>
         </div>
         <div class="price-item">
             <span class="price-name">Комплекс (Стрижка + Борода)</span>
-            <span class="price-val">2 200 ₽</span>
+            <span class="price-val">7 500 ₸</span>
         </div>
         <div class="price-item">
             <span class="price-name">Детская стрижка (до 12 лет)</span>
-            <span class="price-val">1 200 ₽</span>
+            <span class="price-val">4 000 ₸</span>
         </div>
     </section>
 
-    <!-- Пример Галереи / Портфолио -->
+    <!-- Галерея с 4 черно-белыми фото-заглушками -->
     <section class="portfolio-section">
-        <h2 class="section-title">Примеры работ</h2>
+        <h2 class="section-title">Галерея работ</h2>
         <div class="photo-grid">
             <div class="photo-placeholder photo-dark">
-                📷 <span>Пример фото 1</span>
-                <small>(Место для фото интерьера или стрижки)</small>
+                📷 <span>Фото 1</span>
+                <small>(Черный фон)</small>
             </div>
             <div class="photo-placeholder photo-light">
-                📷 <span>Пример фото 2</span>
-                <small>(Место для фото работы мастера)</small>
+                📷 <span>Фото 2</span>
+                <small>(Белый фон)</small>
             </div>
             <div class="photo-placeholder photo-dark">
-                📷 <span>Пример фото 3</span>
-                <small>(Место для фото стрижки/бороды)</small>
+                📷 <span>Фото 3</span>
+                <small>(Черный фон)</small>
+            </div>
+            <div class="photo-placeholder photo-light">
+                📷 <span>Фото 4</span>
+                <small>(Белый фон)</small>
             </div>
         </div>
     </section>
 
-    <!-- Форма онлайн-записи -->
-    <section id="booking" class="booking-section">
-        <h2 class="section-title">Быстрая запись</h2>
-        <form id="tg-form">
-            <input type="text" id="name" placeholder="Ваше имя" required>
-            <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
-            <select id="service">
-                <option value="Мужская стрижка">Мужская стрижка</option>
-                <option value="Стрижка бороды">Стрижка бороды</option>
-                <option value="Комплекс">Комплекс (Стрижка + Борода)</option>
-            </select>
-            <button type="submit" class="btn">Подтвердить запись</button>
-        </form>
-        <div id="status" style="text-align: center; margin-top: 15px; color: #4caf70; font-weight: bold;"></div>
-    </section>
-
-    <!-- Контакты -->
+    <!-- Контакты и Карта 2ГИС -->
     <section class="contacts">
-        <h2 class="section-title">Ждем вас</h2>
-        <div class="address">г. Алматы, ул. Абая, д. 15</div>
+        <h2 class="section-title">Как нас найти</h2>
+        <div class="address">г. Алматы, Центральный парк (ул. Гоголя, 1)</div>
         <p>Режим работы: Ежедневно с 10:00 до 21:00</p>
+        
+        <!-- Встроенная интерактивная карта 2ГИС -->
+        <div class="map-container">
+            <iframe 
+                src="https://widgets.2gis.com/widget?type=media&options=%7B%22pos%22%3A%7B%22lat%22%3A43.262117%2C%22lon%22%3A76.972322%2C%22zoom%22%3A16%7D%2C%22opt%22%3A%7B%22city%22%3A%22almaty%22%7D%2C%22org%22%3A%2270000001031388854%22%7D" 
+                width="100%" 
+                height="350" 
+                frameborder="0" 
+                style="border:0;" 
+                allowfullscreen="true">
+            </iframe>
+        </div>
     </section>
 
-    <!-- Скрипт отправки в Telegram -->
-    <script>
-        const BOT_TOKEN = 'ВАШ_ТОКЕН_БОТА';
-        const CHAT_ID = 'ВАШ_CHAT_ID';
-
-        document.getElementById('tg-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const service = document.getElementById('service').value;
-            const statusDiv = document.getElementById('status');
-
-            const message = `<b>⚡ Заявка с сайта (Барбершоп)!</b>\n\n` +
-                            `<b>Имя:</b> ${name}\n` +
-                            `<b>Телефон:</b> ${phone}\n` +
-                            `<b>Услуга:</b> ${service}`;
-
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: CHAT_ID, parse_mode: 'html', text: message })
-            })
-            .then(res => {
-                if(res.ok) {
-                    statusDiv.innerText = 'Заявка принята! Мы свяжемся с вами.';
-                    document.getElementById('tg-form').reset();
-                } else {
-                    statusDiv.innerText = 'Ошибка отправки.';
-                }
-            })
-            .catch(() => statusDiv.innerText = 'Ошибка сети.');
-        });
-    </script>
 </body>
 </html>
