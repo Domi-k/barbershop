@@ -111,7 +111,7 @@
             color: var(--text-white);
         }
 
-        /* Интерактивная плавающая кнопка-звонок */
+        /* Интерактивная кнопка-звонок */
         .phone-btn {
             display: inline-block;
             background-color: var(--accent-green);
@@ -179,7 +179,7 @@
             font-size: 17px;
         }
 
-        /* --- Блок Галереи с черно-белыми заглушками --- */
+        /* --- Блок Галереи --- */
         .portfolio-section {
             padding: 40px 5%;
             max-width: 900px;
@@ -228,7 +228,7 @@
             margin-top: 5px;
         }
 
-        /* --- Контакты и Карта 2ГИС --- */
+        /* --- Контакты --- */
         .contacts {
             padding: 40px 5%;
             text-align: center;
@@ -248,35 +248,27 @@
             margin-bottom: 20px;
         }
 
-        .map-container {
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid rgba(27, 94, 58, 0.4);
-        }
-
         .gis-btn {
             display: inline-block;
-            margin-top: 15px;
-            background-color: #141414;
+            background-color: var(--accent-green);
             color: var(--text-white);
-            padding: 10px 20px;
+            padding: 14px 28px;
             border-radius: 6px;
             text-decoration: none;
-            font-size: 14px;
-            border: 1px solid var(--accent-green);
-            transition: background-color 0.2s;
+            font-size: 16px;
+            font-weight: 700;
+            transition: background-color 0.2s, transform 0.2s;
         }
 
         .gis-btn:hover {
-            background-color: var(--accent-green);
+            background-color: var(--bright-green);
+            transform: translateY(-2px);
         }
 
         /* Мобильная адаптивность */
         @media (max-width: 480px) {
             .hero h1 { font-size: 26px; }
-            .phone-btn { width: 100%; text-align: center; }
+            .phone-btn, .gis-btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
@@ -322,7 +314,7 @@
         </div>
     </section>
 
-    <!-- Галерея с 4 черно-белыми фото-заглушками -->
+    <!-- Галерея -->
     <section class="portfolio-section">
         <h2 class="section-title">Галерея работ</h2>
         <div class="photo-grid">
@@ -345,23 +337,13 @@
         </div>
     </section>
 
-    <!-- Контакты и Карта 2ГИС -->
+    <!-- Контакты -->
     <section class="contacts">
         <h2 class="section-title">Как нас найти</h2>
         <div class="address">г. Алматы, Центральный парк (ул. Гоголя, 1)</div>
         <p>Режим работы: Ежедневно с 10:00 до 21:00</p>
         
-        <!-- Встроенная интерактивная карта 2ГИС -->
-        <div class="map-container">
-            <iframe 
-                src="https://widgets.2gis.com/widget?type=media&options=%7B%22pos%22%3A%7B%22lat%22%3A43.250556%2C%22lon%22%3A76.974722%2C%22zoom%22%3A16%7D%2C%22opt%22%3A%7B%22city%22%3A%22almaty%22%7D%2C%22org%22%3A%2270000001031388854%22%7D" 
-                width="100%" 
-                height="350" 
-                frameborder="0" 
-                style="border:0;" 
-                allowfullscreen="true">
-            </iframe>
-        </div>
+        <!-- Прямая рабочая кнопка 2ГИС -->
         <a href="https://go.2gis.com/Bxxha" target="_blank" class="gis-btn">📍 Открыть маршрут в 2ГИС</a>
     </section>
 
