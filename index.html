@@ -256,6 +256,23 @@
             border: 1px solid rgba(27, 94, 58, 0.4);
         }
 
+        .gis-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: #141414;
+            color: var(--text-white);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            border: 1px solid var(--accent-green);
+            transition: background-color 0.2s;
+        }
+
+        .gis-btn:hover {
+            background-color: var(--accent-green);
+        }
+
         /* Мобильная адаптивность */
         @media (max-width: 480px) {
             .hero h1 { font-size: 26px; }
@@ -277,7 +294,7 @@
         <h1>Мужские стрижки <br> и моделирование бороды</h1>
         <p>Классика и тренды. Чай, кофе и мужская атмосфера.</p>
 
-        <!-- Блок со связью по номеру вместо кнопки записи -->
+        <!-- Блок со связью по номеру -->
         <div class="call-to-action">
             <h3>Для записи свяжитесь по номеру:</h3>
             <a href="tel:+77071234567" class="phone-btn">📞 +7 (707) 123-45-67</a>
@@ -337,7 +354,7 @@
         <!-- Встроенная интерактивная карта 2ГИС -->
         <div class="map-container">
             <iframe 
-                src="https://widgets.2gis.com/widget?type=media&options=%7B%22pos%22%3A%7B%22lat%22%3A43.262117%2C%22lon%22%3A76.972322%2C%22zoom%22%3A16%7D%2C%22opt%22%3A%7B%22city%22%3A%22almaty%22%7D%2C%22org%22%3A%2270000001031388854%22%7D" 
+                src="https://widgets.2gis.com/widget?type=media&options=%7B%22pos%22%3A%7B%22lat%22%3A43.250556%2C%22lon%22%3A76.974722%2C%22zoom%22%3A16%7D%2C%22opt%22%3A%7B%22city%22%3A%22almaty%22%7D%2C%22org%22%3A%2270000001031388854%22%7D" 
                 width="100%" 
                 height="350" 
                 frameborder="0" 
@@ -345,6 +362,7 @@
                 allowfullscreen="true">
             </iframe>
         </div>
+        <a href="https://go.2gis.com/Bxxha" target="_blank" class="gis-btn">📍 Открыть маршрут в 2ГИС</a>
     </section>
 
 </body>
