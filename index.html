@@ -3,231 +3,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мужская стрижка и бритье | Барбершоп "BORODA"</title>
+    <title>Барбершоп BRUTAL | Мужские стрижки</title>
     <style>
-        /* --- Сброс базовых стилей и шрифты --- */
+        /* --- Сброс стилей и переменные --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         :root {
-            --bg-dark: #121513;        /* Основной почти черный фон */
-            --card-bg: #1a201c;        /* Цвет карточек и блоков */
-            --accent-green: #2e5a44;   /* Темно-зеленый основной цвет */
-            --bright-green: #3f7a5c;   /* Светло-зеленый акцент */
-            --text-light: #e5ece8;     /* Светлый цвет текста */
-            --text-muted: #9eb1a6;     /* Приглушенный цвет текста */
+            --bg-black: #0d0d0d;         /* Глубокий черный */
+            --card-gray: #161616;        /* Темно-серый для блоков */
+            --accent-green: #1b5e3a;     /* Темно-зеленый основной */
+            --bright-green: #23784a;     /* Более светлый темно-зеленый для наведения */
+            --text-white: #ffffff;       /* Белый текст */
+            --text-gray: #9e9e9e;        /* Серый текст */
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            line-height: 1.5;
         }
 
         /* --- Шапка --- */
-        .header {
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
-            background-color: rgba(18, 21, 19, 0.95);
+            padding: 15px 5%;
+            background-color: var(--bg-black);
+            border-bottom: 2px solid var(--accent-green);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(46, 90, 68, 0.3);
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 800;
+            font-size: 22px;
+            font-weight: 900;
             letter-spacing: 2px;
-            color: var(--text-light);
+            color: var(--text-white);
+            text-transform: uppercase;
         }
 
-        .header nav a {
-            color: var(--text-muted);
+        .logo span {
+            color: var(--accent-green);
+        }
+
+        .phone {
+            color: var(--text-white);
             text-decoration: none;
-            margin-left: 20px;
-            transition: color 0.3s;
+            font-weight: bold;
+            font-size: 15px;
         }
 
-        .header nav a:hover {
-            color: var(--bright-green);
-        }
-
-        /* --- Главный экран --- */
+        /* --- Главный баннер (Hero) --- */
         .hero {
-            padding: 100px 5% 80px;
+            padding: 60px 5% 40px;
             text-align: center;
-            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--card-bg) 100%);
+            background: linear-gradient(180deg, #141414 0%, var(--bg-black) 100%);
+        }
+
+        .city-badge {
+            display: inline-block;
+            background-color: rgba(27, 94, 58, 0.2);
+            color: #4caf70;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border: 1px solid var(--accent-green);
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-size: 34px;
+            text-transform: uppercase;
             margin-bottom: 15px;
-            color: var(--text-light);
+            letter-spacing: 1px;
         }
 
         .hero p {
-            font-size: 18px;
-            color: var(--text-muted);
-            max-width: 600px;
+            color: var(--text-gray);
+            font-size: 16px;
+            max-width: 500px;
             margin: 0 auto 30px;
         }
 
-        /* --- Кнопки --- */
+        /* --- Интерактивные "плавающие" кнопки --- */
         .btn {
             display: inline-block;
             background-color: var(--accent-green);
-            color: var(--text-light);
-            padding: 14px 28px;
+            color: var(--text-white);
+            padding: 16px 32px;
             text-decoration: none;
-            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
             border-radius: 6px;
-            font-weight: 600;
+            border: none;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(27, 94, 58, 0.4);
+            
+            /* Эффект плавного "покачивания/поплавания" */
+            animation: floating 3s ease-in-out infinite;
+            transition: all 0.3s ease;
         }
 
-        .btn:hover {
+        /* Анимация плавания */
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Реакция на наведение или касание (пальцем на телефоне) */
+        .btn:hover, .btn:active {
             background-color: var(--bright-green);
-            transform: translateY(-2px);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(35, 120, 74, 0.6);
+            animation-play-state: paused; /* Останавливаем плавание при касании */
         }
 
-        /* --- Блок услуг --- */
-        .services {
-            padding: 60px 5%;
-            max-width: 800px;
+        /* --- Прайс-лист --- */
+        .price-section {
+            padding: 40px 5%;
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        .services h2, .booking h2 {
+        .section-title {
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 32px;
+            text-transform: uppercase;
+            font-size: 24px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
         }
 
-        .services ul {
-            list-style: none;
-        }
-
-        .services li {
+        .price-item {
             display: flex;
             justify-content: space-between;
-            padding: 18px 20px;
-            margin-bottom: 12px;
-            background-color: var(--card-bg);
+            align-items: center;
+            padding: 16px;
+            background-color: var(--card-gray);
+            margin-bottom: 10px;
+            border-radius: 6px;
             border-left: 4px solid var(--accent-green);
-            border-radius: 4px;
-            font-size: 18px;
+        }
+
+        .price-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .price-val {
+            color: #4caf70;
+            font-weight: 800;
+            font-size: 17px;
+        }
+
+        /* --- Блок с примерами фотографий (Портфолио) --- */
+        .portfolio-section {
+            padding: 40px 5%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        /* Стильные фото-заглушки */
+        .photo-placeholder {
+            aspect-ratio: 4 / 3;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border: 2px dashed #333;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-green);
+        }
+
+        .photo-dark {
+            background-color: #141414;
+            color: var(--text-gray);
+        }
+
+        .photo-light {
+            background-color: #e5e5e5;
+            color: #222222;
+            border-color: #cccccc;
+        }
+
+        .photo-placeholder span {
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-top: 5px;
         }
 
         /* --- Форма записи --- */
-        .booking {
-            padding: 60px 5%;
+        .booking-section {
+            padding: 40px 5%;
             max-width: 500px;
             margin: 0 auto;
         }
 
-        .booking form {
+        form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            background-color: var(--card-bg);
-            padding: 30px;
+            gap: 14px;
+            background-color: var(--card-gray);
+            padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-            border: 1px solid rgba(46, 90, 68, 0.2);
+            border: 1px solid rgba(27, 94, 58, 0.3);
         }
 
-        .booking input, .booking select {
-            padding: 12px 15px;
-            background-color: var(--bg-dark);
-            border: 1px solid rgba(46, 90, 68, 0.5);
-            border-radius: 4px;
-            color: var(--text-light);
-            font-size: 16px;
+        input, select {
+            padding: 14px;
+            background-color: var(--bg-black);
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 6px;
+            font-size: 15px;
         }
 
-        .booking input:focus, .booking select:focus {
+        input:focus, select:focus {
             outline: none;
-            border-color: var(--bright-green);
+            border-color: var(--accent-green);
         }
 
-        #status {
-            margin-top: 15px;
+        /* --- Контакты --- */
+        .contacts {
+            padding: 40px 5%;
             text-align: center;
-            color: var(--bright-green);
-            font-weight: 600;
+            background-color: var(--card-gray);
+            margin-top: 40px;
         }
 
-        /* --- Мобильная адаптивность --- */
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 28px;
-            }
-            .header {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .header nav a {
-                margin: 0 10px;
-            }
+        .contacts p {
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        .address {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-white);
+            margin-bottom: 20px;
+        }
+
+        /* Мобильная адаптивность */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 26px; }
+            .btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <!-- Шапка -->
-    <header class="header">
-        <div class="logo">BORODA</div>
-        <nav>
-            <a href="#services">Услуги</a>
-            <a href="#booking">Запись</a>
-        </nav>
+    <header>
+        <div class="logo">BRUTAL<span>.BARBER</span></div>
+        <a href="tel:+79000000000" class="phone">+7 (900) 000-00-00</a>
     </header>
 
-    <!-- Первый экран -->
+    <!-- Главный экран -->
     <section class="hero">
-        <h1>Стильные мужские стрижки и бритье</h1>
-        <p>Премиальный сервис и мужская атмосфера в центре города.</p>
-        <a href="#booking" class="btn">Записаться онлайн</a>
+        <div class="city-badge">г. Алматы • ул. Абая, 15</div>
+        <h1>Мужские стрижки <br> и моделирование бороды</h1>
+        <p>Классика и тренды. Чай, кофе и мужская атмосфера.</p>
+        <a href="#booking" class="btn">Записаться на стрижку</a>
     </section>
 
-    <!-- Прайс-лист -->
-    <section id="services" class="services">
-        <h2>Услуги и цены</h2>
-        <ul>
-            <li><span>Мужская стрижка</span> <span>1 500 ₽</span></li>
-            <li><span>Оформление бороды</span> <span>1 000 ₽</span></li>
-            <li><span>Комплекс (Стрижка + Борода)</span> <span>2 200 ₽</span></li>
-            <li><span>Детская стрижка</span> <span>1 200 ₽</span></li>
-        </ul>
+    <!-- Цены -->
+    <section class="price-section">
+        <h2 class="section-title">Услуги и цены</h2>
+        <div class="price-item">
+            <span class="price-name">Мужская стрижка</span>
+            <span class="price-val">1 500 ₽</span>
+        </div>
+        <div class="price-item">
+            <span class="price-name">Стрижка бороды и усов</span>
+            <span class="price-val">1 000 ₽</span>
+        </div>
+        <div class="price-item">
+            <span class="price-name">Комплекс (Стрижка + Борода)</span>
+            <span class="price-val">2 200 ₽</span>
+        </div>
+        <div class="price-item">
+            <span class="price-name">Детская стрижка (до 12 лет)</span>
+            <span class="price-val">1 200 ₽</span>
+        </div>
     </section>
 
-    <!-- Форма записи -->
-    <section id="booking" class="booking">
-        <h2>Онлайн-запись</h2>
+    <!-- Пример Галереи / Портфолио -->
+    <section class="portfolio-section">
+        <h2 class="section-title">Примеры работ</h2>
+        <div class="photo-grid">
+            <div class="photo-placeholder photo-dark">
+                📷 <span>Пример фото 1</span>
+                <small>(Место для фото интерьера или стрижки)</small>
+            </div>
+            <div class="photo-placeholder photo-light">
+                📷 <span>Пример фото 2</span>
+                <small>(Место для фото работы мастера)</small>
+            </div>
+            <div class="photo-placeholder photo-dark">
+                📷 <span>Пример фото 3</span>
+                <small>(Место для фото стрижки/бороды)</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма онлайн-записи -->
+    <section id="booking" class="booking-section">
+        <h2 class="section-title">Быстрая запись</h2>
         <form id="tg-form">
             <input type="text" id="name" placeholder="Ваше имя" required>
-            <input type="tel" id="phone" placeholder="Ваш телефон" required>
+            <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
             <select id="service">
                 <option value="Мужская стрижка">Мужская стрижка</option>
-                <option value="Оформление бороды">Оформление бороды</option>
+                <option value="Стрижка бороды">Стрижка бороды</option>
                 <option value="Комплекс">Комплекс (Стрижка + Борода)</option>
             </select>
-            <button type="submit" class="btn">Отправить заявку</button>
+            <button type="submit" class="btn">Подтвердить запись</button>
         </form>
-        <div id="status"></div>
+        <div id="status" style="text-align: center; margin-top: 15px; color: #4caf70; font-weight: bold;"></div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contacts">
+        <h2 class="section-title">Ждем вас</h2>
+        <div class="address">г. Алматы, ул. Абая, д. 15</div>
+        <p>Режим работы: Ежедневно с 10:00 до 21:00</p>
     </section>
 
     <!-- Скрипт отправки в Telegram -->
     <script>
-        // Замените эти значения на данные вашего Telegram-бота
         const BOT_TOKEN = 'ВАШ_ТОКЕН_БОТА';
         const CHAT_ID = 'ВАШ_CHAT_ID';
 
@@ -239,33 +366,25 @@
             const service = document.getElementById('service').value;
             const statusDiv = document.getElementById('status');
 
-            const message = `<b>🔥 Новая заявка с сайта!</b>\n\n` +
+            const message = `<b>⚡ Заявка с сайта (Барбершоп)!</b>\n\n` +
                             `<b>Имя:</b> ${name}\n` +
                             `<b>Телефон:</b> ${phone}\n` +
                             `<b>Услуга:</b> ${service}`;
 
             fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    parse_mode: 'html',
-                    text: message
-                })
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: CHAT_ID, parse_mode: 'html', text: message })
             })
-            .then(response => {
-                if (response.ok) {
-                    statusDiv.innerText = 'Заявка успешно отправлена!';
+            .then(res => {
+                if(res.ok) {
+                    statusDiv.innerText = 'Заявка принята! Мы свяжемся с вами.';
                     document.getElementById('tg-form').reset();
                 } else {
-                    statusDiv.innerText = 'Ошибка отправки. Проверьте настройки бота.';
+                    statusDiv.innerText = 'Ошибка отправки.';
                 }
             })
-            .catch(() => {
-                statusDiv.innerText = 'Ошибка соединения.';
-            });
+            .catch(() => statusDiv.innerText = 'Ошибка сети.');
         });
     </script>
 </body>
