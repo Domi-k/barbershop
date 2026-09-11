@@ -14,12 +14,13 @@
         }
 
         :root {
-            --bg-black: #0d0d0d;         /* Глубокий черный */
-            --card-gray: #161616;        /* Темно-серый для блоков */
+            --bg-black: #080808;         /* Угольно-черный */
+            --card-gray: #121212;        /* Темно-серый */
             --accent-green: #1b5e3a;     /* Темно-зеленый основной */
             --bright-green: #23784a;     /* Светло-зеленый акцент */
             --text-white: #ffffff;       /* Белый текст */
-            --text-gray: #9e9e9e;        /* Серый текст */
+            --text-gray: #888888;        /* Серый текст */
+            --border-line: #222222;      /* Линии сетки */
         }
 
         body {
@@ -64,7 +65,7 @@
         .hero {
             padding: 60px 5% 40px;
             text-align: center;
-            background: linear-gradient(180deg, #141414 0%, var(--bg-black) 100%);
+            background: linear-gradient(180deg, #111111 0%, var(--bg-black) 100%);
         }
 
         .city-badge {
@@ -94,7 +95,7 @@
             margin: 0 auto;
         }
 
-        /* --- Блок информации для записи --- */
+        /* --- Блок записи --- */
         .call-to-action {
             padding: 30px 5%;
             max-width: 600px;
@@ -111,7 +112,6 @@
             color: var(--text-white);
         }
 
-        /* Интерактивная кнопка-звонок */
         .phone-btn {
             display: inline-block;
             background-color: var(--accent-green);
@@ -124,7 +124,6 @@
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(27, 94, 58, 0.4);
             margin-top: 10px;
-            
             animation: floating 3s ease-in-out infinite;
             transition: all 0.3s ease;
         }
@@ -135,17 +134,17 @@
             100% { transform: translateY(0px); }
         }
 
-        .phone-btn:hover, .phone-btn:active {
+        .phone-btn:hover {
             background-color: var(--bright-green);
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 8px 25px rgba(35, 120, 74, 0.6);
             animation-play-state: paused;
         }
 
-        /* --- Прайс-лист --- */
+        /* --- Сетка цен (как на скриншоте 1) --- */
         .price-section {
-            padding: 40px 5%;
-            max-width: 700px;
+            padding: 50px 5%;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -157,39 +156,72 @@
             letter-spacing: 1px;
         }
 
-        .price-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px;
-            background-color: var(--card-gray);
-            margin-bottom: 10px;
-            border-radius: 6px;
-            border-left: 4px solid var(--accent-green);
+        .price-table-wrapper {
+            overflow-x: auto;
         }
 
-        .price-name {
-            font-weight: 600;
-            font-size: 16px;
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+            min-width: 600px;
         }
 
-        .price-val {
-            color: #4caf70;
+        .price-table th, .price-table td {
+            padding: 18px 12px;
+            border-bottom: 1px solid var(--border-line);
+        }
+
+        .price-table th {
+            text-transform: uppercase;
             font-weight: 800;
-            font-size: 17px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: var(--text-white);
         }
 
-        /* --- Блок Галереи --- */
+        .price-table td:first-child {
+            text-align: left;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text-white);
+            letter-spacing: 0.5px;
+        }
+
+        .price-table td {
+            color: #d1d1d1;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .price-note {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-top: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Галерея в рамке (как на скриншоте 2) --- */
         .portfolio-section {
             padding: 40px 5%;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
+        }
+
+        .gallery-frame {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
         }
 
         .photo-placeholder {
@@ -200,32 +232,29 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 15px;
-            border: 2px dashed #333;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            padding: 10px;
+            transition: transform 0.2s ease;
         }
 
         .photo-placeholder:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-green);
+            transform: scale(1.02);
         }
 
         .photo-dark {
-            background-color: #141414;
-            color: var(--text-gray);
+            background-color: #1a1a1a;
+            color: var(--text-white);
         }
 
         .photo-light {
-            background-color: #f0f0f0;
+            background-color: #e5e5e5;
             color: #111111;
-            border-color: #cccccc;
         }
 
         .photo-placeholder span {
             font-weight: bold;
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
-            margin-top: 5px;
+            margin-top: 4px;
         }
 
         /* --- Контакты --- */
@@ -233,7 +262,7 @@
             padding: 40px 5%;
             text-align: center;
             background-color: var(--card-gray);
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
         .address {
@@ -265,9 +294,10 @@
             transform: translateY(-2px);
         }
 
-        /* Мобильная адаптивность */
-        @media (max-width: 480px) {
+        /* Адаптивность */
+        @media (max-width: 600px) {
             .hero h1 { font-size: 26px; }
+            .photo-grid { grid-template-columns: repeat(2, 1fr); }
             .phone-btn, .gis-btn { width: 100%; text-align: center; }
         }
     </style>
@@ -286,53 +316,71 @@
         <h1>Мужские стрижки <br> и моделирование бороды</h1>
         <p>Классика и тренды. Чай, кофе и мужская атмосфера.</p>
 
-        <!-- Блок со связью по номеру -->
         <div class="call-to-action">
             <h3>Для записи свяжитесь по номеру:</h3>
             <a href="tel:+77071234567" class="phone-btn">📞 +7 (707) 123-45-67</a>
         </div>
     </section>
 
-    <!-- Цены -->
+    <!-- Цены (Сетка по категориям) -->
     <section class="price-section">
         <h2 class="section-title">Услуги и цены</h2>
-        <div class="price-item">
-            <span class="price-name">Мужская стрижка</span>
-            <span class="price-val">5 000 ₸</span>
+        <div class="price-table-wrapper">
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th style="text-align: left;">Услуга</th>
+                        <th>Барбер</th>
+                        <th>Топ Барбер</th>
+                        <th>Эксперт</th>
+                        <th>Премиум</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Мужская стрижка</td>
+                        <td>5 000 ₸</td>
+                        <td>6 500 ₸</td>
+                        <td>8 000 ₸</td>
+                        <td>10 000 ₸</td>
+                    </tr>
+                    <tr>
+                        <td>Моделирование бороды / Бритьё</td>
+                        <td>3 500 ₸</td>
+                        <td>4 500 ₸</td>
+                        <td>5 500 ₸</td>
+                        <td>7 000 ₸</td>
+                    </tr>
+                    <tr>
+                        <td>Коррекция воском</td>
+                        <td>1 500 ₸</td>
+                        <td>2 000 ₸</td>
+                        <td>2 500 ₸</td>
+                        <td>3 000 ₸</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="price-item">
-            <span class="price-name">Стрижка бороды и усов</span>
-            <span class="price-val">3 500 ₸</span>
-        </div>
-        <div class="price-item">
-            <span class="price-name">Комплекс (Стрижка + Борода)</span>
-            <span class="price-val">7 500 ₸</span>
-        </div>
-        <div class="price-item">
-            <span class="price-name">Детская стрижка (до 12 лет)</span>
-            <span class="price-val">4 000 ₸</span>
-        </div>
+        <p class="price-note">С полным перечнем услуг и актуальной стоимостью вы можете ознакомиться по телефону у администратора</p>
     </section>
 
-    <!-- Галерея -->
+    <!-- Галерея в белой рамке -->
     <section class="portfolio-section">
         <h2 class="section-title">Галерея работ</h2>
-        <div class="photo-grid">
-            <div class="photo-placeholder photo-dark">
-                📷 <span>Фото 1</span>
-                <small>(Черный фон)</small>
-            </div>
-            <div class="photo-placeholder photo-light">
-                📷 <span>Фото 2</span>
-                <small>(Белый фон)</small>
-            </div>
-            <div class="photo-placeholder photo-dark">
-                📷 <span>Фото 3</span>
-                <small>(Черный фон)</small>
-            </div>
-            <div class="photo-placeholder photo-light">
-                📷 <span>Фото 4</span>
-                <small>(Белый фон)</small>
+        <div class="gallery-frame">
+            <div class="photo-grid">
+                <div class="photo-placeholder photo-dark">
+                    📷 <span>Фото 1</span>
+                </div>
+                <div class="photo-placeholder photo-light">
+                    📷 <span>Фото 2</span>
+                </div>
+                <div class="photo-placeholder photo-dark">
+                    📷 <span>Фото 3</span>
+                </div>
+                <div class="photo-placeholder photo-light">
+                    📷 <span>Фото 4</span>
+                </div>
             </div>
         </div>
     </section>
@@ -343,7 +391,6 @@
         <div class="address">г. Алматы, Центральный парк (ул. Гоголя, 1)</div>
         <p>Режим работы: Ежедневно с 10:00 до 21:00</p>
         
-        <!-- Прямая рабочая кнопка 2ГИС -->
         <a href="https://go.2gis.com/Bxxha" target="_blank" class="gis-btn">📍 Открыть маршрут в 2ГИС</a>
     </section>
 
